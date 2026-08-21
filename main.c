@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include <ctype.h>
 
 #define MAX_INPUT 100
@@ -121,10 +122,26 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *am[] = {"i am", "i'm"};
+        for (int i = 0; i < (sizeof(am) / sizeof(am[0])); i++) {
+            if (strstr(input, am[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *position;
+                position = strstr(input, am[i]);
+                strcpy(result, position + (strlen(am[i]) + 1));
+                printf("How long have you been %s?\n", result);
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
         const char *emotion[] = {"sad", "depressed", "angry", "frustrated", "annoyed"};
         for (int i = 0; i < (sizeof(emotion) / sizeof(emotion[0])); i++) {
             if (strstr(input, emotion[i]) != NULL) {
-                printf("Why are you %s?\n", emotion[i]);
+                printf("Why are you feeling %s?\n", emotion[i]);
                 replied = 1;
                 break;
             }
@@ -180,9 +197,27 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        // If you start with "I am X" -> "How long have you been X"?
 
-        printf("Please, go on.\n");
+        srand(time(NULL));
+        int random = rand() % (3 + 1);
+
+        switch (random) {
+            case 0:
+                printf("Please, go on.\n");
+                break;
+            case 1:
+                printf("Can you think of a specific example?\n");
+                break;
+            case 2:
+                printf("What makes you say that?\n");
+                break;
+            case 3:
+                printf("Are you certain?\n");
+                break;
+            default:
+                printf("Please, continue.");
+                break;
+        }
 
     }
 
@@ -215,18 +250,11 @@ int main(void) {
 
     // If a "Why" question is asked, and an empty reply comes back, like "Because it does/Simply because/because" -> "Don't other reasons come to mind? What other reasons might there be?"
 
-
-    // Please go on.
-    // Can you think of a specific example?
-
     // X made me do something.
     // X made you do something?
 
     // When the user types "bye" or "goodbye" the session is closed, and the conversation is
     // dumped into a .txt file in the current directory
-
-    // Return "What makes you say that when no keyword is identified"
-    // Use synonyms when appropriate to diversify the language
 
     return 0;
 }
