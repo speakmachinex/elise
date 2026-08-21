@@ -14,6 +14,37 @@ void quit(char *response) {
     }
 }
 
+void encourage() {
+    int random = rand() % (6 + 1);
+    switch (random) {
+        case 0:
+            printf("Please, go on.\n");
+            break;
+        case 1:
+            printf("Can you think of a specific example?\n");
+            break;
+        case 2:
+            printf("What makes you say that?\n");
+            break;
+        case 3:
+            printf("Are you certain?\n");
+            break;
+        case 4:
+            printf("How so?");
+            break;
+        case 5:
+            printf("Can you give me an example?");
+            break;
+        case 6:
+            printf("Could you provide an example?");
+            break;
+        default:
+            printf("Please, continue.");
+            break;
+    }
+
+}
+
 // void lowercase(char *response, char *input) {
 //
 //     for (int i = 0; i < strlen(response); i++) {
@@ -207,43 +238,26 @@ int main(void) {
         }
 
         if (replied == 1) continue;
-        srand(time(NULL));
-        int random = rand() % (3 + 1);
 
-        switch (random) {
-            case 0:
-                printf("Please, go on.\n");
+        const char *all[] = {"are all", "you all"};
+        for (int i = 0; i < (sizeof(all) / sizeof(all[0])); i++) {
+            if (strstr(input, all[i]) != NULL) {
+                encourage();
+                replied = 1;
                 break;
-            case 1:
-                printf("Can you think of a specific example?\n");
-                break;
-            case 2:
-                printf("What makes you say that?\n");
-                break;
-            case 3:
-                printf("Are you certain?\n");
-                break;
-            default:
-                printf("Please, continue.");
-                break;
+            }
         }
 
+        if (replied == 1) continue;
+
+        encourage();
     }
 
 
 
     // Strip punctuation: .,;!?()
 
-    // Use pre-defined responses, sometimes incorporating the user input
     // When incorporating user input, translate terms such as "I" to "You"
-    // Eg. If a user says "I'm feeling depressed" -> "Why do you believe/feel/think you are depressed?
-    // If emotional term is used in combination with I, ask why "emotional term".
-    // How long have you been feeling "emotional term"
-
-    // Emotional language that describes a person or a group
-    // "Men are all" alike/the same
-    // "Women are all"
-    // "... are stupid/dumb/annoying/evil etc." -> In what way? How so? What makes you say that?
 
     // If negative outcome, such as "she gets into trouble", then ask
     // What would it mean to you if "she gets into trouble?"
