@@ -78,7 +78,7 @@ int main(void) {
             }
         }
 
-        const char *never[] = {"i have no", "i don't have", "i've never had", "i have never"};
+        const char *never[] = {"i have no", "i don't", "i've never", "i have never"};
         for (int i = 0; i < (sizeof(never) / sizeof(never[0])); i++) {
             if (strstr(input, never[i]) != NULL) {
                 printf("Why do you think that is?\n");
@@ -86,6 +86,13 @@ int main(void) {
             }
         }
 
+        const char *angry[] = {"fuck", "cunt", "shit"};
+        for (int i = 0; i < (sizeof(angry) / sizeof(angry[0])); i++) {
+            if (strstr(input, angry[i]) != NULL) {
+                printf("Enhance your calm.\n");
+                break;
+            }
+        }
         const char *dumb[] = {"dumb", "stupid", "silly", "idiotic", "useless"};
         const char *machine[] = {"machine", "computer", "clanker", "bot", "ai"};
         for (int i = 0; i < (sizeof(dumb) / sizeof(dumb[0])); i++) {
@@ -146,15 +153,11 @@ int main(void) {
     // X made me do something.
     // X made you do something?
 
-    // printf("%s", response);
-
     // When the user types "bye" or "goodbye" the session is closed, and the conversation is
     // dumped into a .txt file in the current directory
 
     // Return "What makes you say that when no keyword is identified"
     // Use synonyms when appropriate to diversify the language
-
-    // If the user gets angry, reply with "Enhance your calm."
 
     return 0;
 }
