@@ -148,14 +148,30 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *not[] = {"you aren't", "you are not"};
+        for (int i = 0; i < (sizeof(not) / sizeof(not[0])); i++) {
+            if (strstr(input, not[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *position;
+                position = strstr(input, not[i]);
+                strcpy(result, position + (strlen(not[i]) + 1));
+                printf("What makes you think I'm not %s?\n", result);
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
         const char *are[] = {"you are", "you're"};
         for (int i = 0; i < (sizeof(are) / sizeof(are[0])); i++) {
             if (strstr(input, are[i]) != NULL) {
                 char *result;
                 result = malloc(MAX_INPUT);
-                char *you_are;
-                you_are = strstr(input, are[i]);
-                strcpy(result, you_are + (strlen(are[i]) + 1));
+                char *position;
+                position = strstr(input, are[i]);
+                strcpy(result, position + (strlen(are[i]) + 1));
                 printf("What makes you think I'm %s?\n", result);
                 replied = 1;
                 break;
@@ -163,6 +179,8 @@ int main(void) {
         }
 
         if (replied == 1) continue;
+
+        // If you start with "I am X" -> "How long have you been X"?
 
         printf("Please, go on.\n");
 
@@ -186,8 +204,6 @@ int main(void) {
     // If negative outcome, such as "she gets into trouble", then ask
     // What would it mean to you if "she gets into trouble?"
 
-    // If you start with "I am X" -> "How long have you been X"?
-    // "You are _not listening_" -> "What makes you think I am _not listening_?"
 
     // Do you know what I mean? Do you get it? Do you understand?
     // I understand. Please, go on.
