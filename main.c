@@ -100,21 +100,29 @@ int main(void) {
                 for (int i = 0; i < (sizeof(machine) / sizeof(machine[0])); i++) {
                     if (strstr(input, machine[i]) != NULL) {
                         printf("Do computers frighten you?\n");
+                        break;
                     }
                 }
             }
         }
 
-        printf("Please, go on.\n");
+        const char *are[] = {"you are", "you're"};
+        for (int i = 0; i < (sizeof(are) / sizeof(are[0])); i++) {
+            if (strstr(input, are[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *you_are;
+                you_are = strstr(input, "you are");
+                strcpy(result, you_are + 8);
+                printf("What makes you think I'm %s?\n", result);
+                break;
+            }
+        }
+
+        // printf("Please, go on.\n");
 
     }
 
-        // if (strstr(input, "you are") != NULL) {
-        //     char *result;
-        //     int *you_are = strstr(input, "you are");
-        //     strncpy(result, you_are + 7, strlen(you_are) - 7);
-        //     printf("What makes you think I'm %s", result);
-        // }
 
 
     // Strip punctuation: .,;!?()
