@@ -27,17 +27,15 @@ int main(void) {
     int said_hello = 0;
 
     printf("                                   \n");
-    printf("██████╗  ██████╗ ██████╗ \n");
-    printf("██╔══██╗██╔═══██╗██╔══██╗\n");
-    printf("██████╔╝██║   ██║██████╔╝\n");
-    printf("██╔══██╗██║   ██║██╔══██╗\n");
-    printf("██████╔╝╚██████╔╝██████╔╝\n");
-    printf("╚═════╝  ╚═════╝ ╚═════╝ \n");
+    printf("███████╗██╗     ██╗███████╗███████╗\n");
+    printf("██╔════╝██║     ██║██╔════╝██╔════╝\n");
+    printf("█████╗  ██║     ██║███████╗█████╗  \n");
+    printf("██╔══╝  ██║     ██║╚════██║██╔══╝  \n");
+    printf("███████╗███████╗██║███████║███████╗\n");
+    printf("╚══════╝╚══════╝╚═╝╚══════╝╚══════╝\n");
     printf("                                   \n");
 
-
-    printf("Greetings and salutations. I'm Associate Bob.\n");
-    printf("What seems to be your boggle?\n\n");
+    printf("Hi! My name is Elise. What seems to be your boggle?\n\n");
 
     while (1) {
 
