@@ -3,26 +3,30 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#define MAX_INPUT 100
+
 void quit(char *response) {
-    char *terminate[] = {"bye", "goodbye", "quit", "exit", "cya", "farewell"};
+    const char *terminate[] = {"bye", "goodbye", "quit", "exit", "cya", "farewell"};
 
     for (int i = 0; i < (sizeof(terminate) / sizeof(terminate[0])); i++) {
         if (strcmp(response, terminate[i]) == 0) { exit(0); }
     }
 }
 
-void lowercase(char *response, char *input) {
-
-    for (int i = 0; i < strlen(response); i++) {
-        response[i] = tolower(response[i]);
-    }
-    strcpy(input, response);
-}
+// void lowercase(char *response, char *input) {
+//
+//     for (int i = 0; i < strlen(response); i++) {
+//         response[i] = tolower(response[i]);
+//     }
+//     strncpy(input, response, 50);
+//     printf("We got here.\n");
+// }
 
 int main(void) {
 
-    char response[50];
+    char *response;
     char *input;
+    input = malloc(MAX_INPUT);
 
     int said_hello = 0;
 
@@ -35,14 +39,14 @@ int main(void) {
     printf("╚══════╝╚══════╝╚═╝╚══════╝╚══════╝\n");
     printf("                                   \n");
 
-    printf("Hi! My name is Elise. What seems to be your boggle?\n\n");
+    printf("Hi! My name is Elise. What seems to be your boggle?\n");
 
     while (1) {
-
-        printf("> ");
-        scanf("%s", response);
-        lowercase(response, input);
-        // printf("You said %s\n", input);
+        printf("\n> ");
+        fgets(input, MAX_INPUT, stdin);
+        strtok(input, "\n");
+        // lowercase(response, input);
+        // printf("You said: %s\n", input);
         quit(input);
 
         if (strstr(input, "hello") != NULL) {
@@ -56,7 +60,37 @@ int main(void) {
             said_hello++;
         }
 
+        const char *harm[] = {"harm", "abuse", "abusive", "beat", "harass"};
+        for (int i = 0; i < (sizeof(harm) / sizeof(harm[0])); i++) {
+            if (strstr(input, harm[i]) != NULL) {
+                printf("I'm sorry to hear that. How does speaking about this make you feel?\n");
+                break;
+            }
+        }
+
+        const char *dumb[] = {"dumb", "stupid", "silly", "idiotic", "useless"};
+        const char *machine[] = {"machine", "computer", "clanker", "bot", "ai"};
+        for (int i = 0; i < (sizeof(dumb) / sizeof(dumb[0])); i++) {
+            if (strstr(input, dumb[i]) != NULL) {
+                for (int i = 0; i < (sizeof(machine) / sizeof(machine[0])); i++) {
+                    if (strstr(input, machine[i]) != NULL) {
+                        printf("Do computers frighten you?\n");
+                    }
+                }
+            }
+        }
+
+
+
     }
+
+        // if (strstr(input, "you are") != NULL) {
+        //     char *result;
+        //     int *you_are = strstr(input, "you are");
+        //     strncpy(result, you_are + 7, strlen(you_are) - 7);
+        //     printf("What makes you think I'm %s", result);
+        // }
+
 
     // Strip punctuation: .,;!?()
 
@@ -71,14 +105,8 @@ int main(void) {
     // "Women are all"
     // "... are stupid/dumb/annoying/evil etc." -> In what way? How so? What makes you say that?
 
-    // If very strong language is used, such as "harm", "harmed", "abuse", "abused", "beat", etc.
-    // insert a response such as "I'm sorry to hear that. How does speaking about this make you feel?"
-
     // If negative outcome, such as "she gets into trouble", then ask
     // What would it mean to you if "she gets into trouble?"
-
-    // If you call the machine a: dumb/stupid machine/computer/clanker/bot/chatbot/AI then
-    // Do computers frighten you?
 
     // If you start with "I am X" -> "How long have you been X"?
     // "You are _not listening_" -> "What makes you think I am _not listening_?"
