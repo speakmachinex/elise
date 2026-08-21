@@ -26,17 +26,18 @@ int main(void) {
 
     int said_hello = 0;
 
-    printf("Welcome to\n");
     printf("                                   \n");
-    printf("███████╗██╗     ██╗███████╗███████╗\n");
-    printf("██╔════╝██║     ██║██╔════╝██╔════╝\n");
-    printf("█████╗  ██║     ██║███████╗█████╗  \n");
-    printf("██╔══╝  ██║     ██║╚════██║██╔══╝  \n");
-    printf("███████╗███████╗██║███████║███████╗\n");
-    printf("╚══════╝╚══════╝╚═╝╚══════╝╚══════╝\n");
+    printf("██████╗  ██████╗ ██████╗ \n");
+    printf("██╔══██╗██╔═══██╗██╔══██╗\n");
+    printf("██████╔╝██║   ██║██████╔╝\n");
+    printf("██╔══██╗██║   ██║██╔══██╗\n");
+    printf("██████╔╝╚██████╔╝██████╔╝\n");
+    printf("╚═════╝  ╚═════╝ ╚═════╝ \n");
     printf("                                   \n");
 
-    printf("Hi! I'm Elise. What seems to be your boggle?\n");
+
+    printf("Greetings and salutations. I'm Associate Bob.\n");
+    printf("What seems to be your boggle?\n\n");
 
     while (1) {
 
@@ -111,6 +112,8 @@ int main(void) {
 
     // Return "What makes you say that when no keyword is identified"
     // Use synonyms when appropriate to diversify the language
+
+    // If the user gets angry, reply with "Enhance your calm."
 
     return 0;
 }
