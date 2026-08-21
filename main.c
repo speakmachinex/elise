@@ -68,6 +68,24 @@ int main(void) {
             }
         }
 
+        const char *family[] = {"mother", "mom", "mum", "father", "dad", "daddy", "sister",
+                                "sis", "bro", "brother", "sibling", "siblings", "wife", 
+                                "husband", "spouse", "partner", "uncle", "aunt", "nan"};
+        for (int i = 0; i < (sizeof(family) / sizeof(family[0])); i++) {
+            if (strstr(input, family[i]) != NULL) {
+                printf("Tell me about your family.\n");
+                break;
+            }
+        }
+
+        const char *never[] = {"i have no", "i don't have", "i've never had", "i have never"};
+        for (int i = 0; i < (sizeof(never) / sizeof(never[0])); i++) {
+            if (strstr(input, never[i]) != NULL) {
+                printf("Why do you think that is?\n");
+                break;
+            }
+        }
+
         const char *dumb[] = {"dumb", "stupid", "silly", "idiotic", "useless"};
         const char *machine[] = {"machine", "computer", "clanker", "bot", "ai"};
         for (int i = 0; i < (sizeof(dumb) / sizeof(dumb[0])); i++) {
@@ -121,9 +139,6 @@ int main(void) {
 
     // If a "Why" question is asked, and an empty reply comes back, like "Because it does/Simply because/because" -> "Don't other reasons come to mind? What other reasons might there be?"
 
-    // People being referenced directly, such as mother, father, family, wife, husband, etc.
-    // Tell me about your family.
-    // Friends -> Tell me about your friends.
 
     // Please go on.
     // Can you think of a specific example?
