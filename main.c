@@ -154,8 +154,8 @@ int main(void) {
                 char *result;
                 result = malloc(MAX_INPUT);
                 char *you_are;
-                you_are = strstr(input, "you are");
-                strcpy(result, you_are + 8);
+                you_are = strstr(input, are[i]);
+                strcpy(result, you_are + (strlen(are[i]) + 1));
                 printf("What makes you think I'm %s?\n", result);
                 replied = 1;
                 break;
