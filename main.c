@@ -197,7 +197,16 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *understand[] = {"do you understand", "do you know what i mean", "do you get it?"};
+        for (int i = 0; i < (sizeof(understand) / sizeof(understand[0])); i++) {
+            if (strstr(input, understand[i]) != NULL) {
+                printf("Yes. Please, continue.\n");
+                replied = 1;
+                break;
+            }
+        }
 
+        if (replied == 1) continue;
         srand(time(NULL));
         int random = rand() % (3 + 1);
 
@@ -238,10 +247,6 @@ int main(void) {
 
     // If negative outcome, such as "she gets into trouble", then ask
     // What would it mean to you if "she gets into trouble?"
-
-
-    // Do you know what I mean? Do you get it? Do you understand?
-    // I understand. Please, go on.
 
     // If love mentioned -> "Do you feel worthy of love?"
     // If "Yes/I do/Of course" -> "Go on."
