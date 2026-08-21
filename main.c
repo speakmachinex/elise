@@ -42,6 +42,7 @@ int main(void) {
     printf("Hi! My name is Elise. What seems to be your boggle?\n");
 
     while (1) {
+        int replied = 0;
         printf("\n> ");
         fgets(input, MAX_INPUT, stdin);
         strtok(input, "\n");
@@ -51,48 +52,86 @@ int main(void) {
 
         if (strstr(input, "hello") != NULL) {
             switch (said_hello) {
-                case 0: printf("Hello. How can I help?\n"); break;
-                case 1: printf("We've already said hello. How can I help?\n"); break;
-                case 2: printf("It is generally considered rude to say hello many times.\n"); break;
-                default: printf("Let's change the subject.\n"); break;
+                case 0:
+                    printf("Hello. How can I help?\n");
+                    replied = 1;
+                    break;
+                case 1:
+                    printf("We've already said hello. How can I help?\n");
+                    replied = 1;
+                    break;
+                case 2:
+                    printf("It is generally considered rude to say hello many times.\n");
+                    replied = 1;
+                    break;
+                default:
+                    printf("Let's change the subject.\n");
+                    replied = 1;
+                    break;
             }
 
             said_hello++;
         }
 
+        if (replied == 1) continue;
+
         const char *harm[] = {"harm", "abuse", "abusive", "beat", "harass"};
         for (int i = 0; i < (sizeof(harm) / sizeof(harm[0])); i++) {
             if (strstr(input, harm[i]) != NULL) {
                 printf("I'm sorry to hear that. How does speaking about this make you feel?\n");
+                replied = 1;
                 break;
             }
         }
+
+        if (replied == 1) continue;
 
         const char *family[] = {"mother", "mom", "mum", "father", "dad", "daddy", "sister",
                                 "sis", "bro", "brother", "sibling", "siblings", "wife", 
                                 "husband", "spouse", "partner", "uncle", "aunt", "nan"};
         for (int i = 0; i < (sizeof(family) / sizeof(family[0])); i++) {
             if (strstr(input, family[i]) != NULL) {
-                printf("Tell me about your family.\n");
+                printf("Tell me about your %s.\n", family[i]);
+                replied = 1;
                 break;
             }
         }
+
+        if (replied == 1) continue;
 
         const char *never[] = {"i have no", "i don't", "i've never", "i have never"};
         for (int i = 0; i < (sizeof(never) / sizeof(never[0])); i++) {
             if (strstr(input, never[i]) != NULL) {
                 printf("Why do you think that is?\n");
+                replied = 1;
                 break;
             }
         }
+
+        if (replied == 1) continue;
 
         const char *angry[] = {"fuck", "cunt", "shit"};
         for (int i = 0; i < (sizeof(angry) / sizeof(angry[0])); i++) {
             if (strstr(input, angry[i]) != NULL) {
                 printf("Enhance your calm.\n");
+                replied = 1;
                 break;
             }
         }
+
+        if (replied == 1) continue;
+
+        const char *emotion[] = {"sad", "depressed", "angry", "frustrated", "annoyed"};
+        for (int i = 0; i < (sizeof(emotion) / sizeof(emotion[0])); i++) {
+            if (strstr(input, emotion[i]) != NULL) {
+                printf("Why are you %s?\n", emotion[i]);
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
         const char *dumb[] = {"dumb", "stupid", "silly", "idiotic", "useless"};
         const char *machine[] = {"machine", "computer", "clanker", "bot", "ai"};
         for (int i = 0; i < (sizeof(dumb) / sizeof(dumb[0])); i++) {
@@ -100,11 +139,14 @@ int main(void) {
                 for (int i = 0; i < (sizeof(machine) / sizeof(machine[0])); i++) {
                     if (strstr(input, machine[i]) != NULL) {
                         printf("Do computers frighten you?\n");
+                        replied = 1;
                         break;
                     }
                 }
             }
         }
+
+        if (replied == 1) continue;
 
         const char *are[] = {"you are", "you're"};
         for (int i = 0; i < (sizeof(are) / sizeof(are[0])); i++) {
@@ -115,11 +157,14 @@ int main(void) {
                 you_are = strstr(input, "you are");
                 strcpy(result, you_are + 8);
                 printf("What makes you think I'm %s?\n", result);
+                replied = 1;
                 break;
             }
         }
 
-        // printf("Please, go on.\n");
+        if (replied == 1) continue;
+
+        printf("Please, go on.\n");
 
     }
 
