@@ -18,11 +18,11 @@ int chance(int maximum) {
     return random;
 }
 
-void quit(char *response) {
+void quit(char *input) {
     const char *terminate[] = {"bye", "goodbye", "quit", "exit", "cya", "farewell", "piss off"};
 
     for (int i = 0; i < (sizeof(terminate) / sizeof(terminate[0])); i++) {
-        if (strcmp(response, terminate[i]) == 0) {
+        if (strcmp(input, terminate[i]) == 0) {
             printf("Au revoir, mon ami.\n");
             exit(0);
         }
@@ -64,18 +64,15 @@ void encourage() {
     }
 }
 
-// void lowercase(char *response, char *input) {
-//
-//     for (int i = 0; i < strlen(response); i++) {
-//         response[i] = tolower(response[i]);
-//     }
-//     strncpy(input, response, 50);
-//     printf("We got here.\n");
-// }
+void lowercase(char *input) {
+
+    for (int i = 0; i < strlen(input); i++) {
+        input[i] = tolower(input[i]);
+    }
+}
 
 int main(void) {
 
-    char *response;
     char *input;
     input = malloc(MAX_INPUT);
 
@@ -101,7 +98,7 @@ int main(void) {
         printf("\n> ");
         fgets(input, MAX_INPUT, stdin);
         strtok(input, "\n");
-        // lowercase(response, input);
+        lowercase(input);
         // printf("You said: %s\n", input);
         quit(input);
 
@@ -328,7 +325,8 @@ int main(void) {
         if (replied == 1) continue;
 
         const char *brought_up[] = {"you brought up", "you brought it up",
-                                    "you mentioned", "you said"};
+                                    "you mentioned", "you said", "how are you",
+                                    "are you well?", "are you good?"};
         for (int i = 0; i < (sizeof(brought_up) / sizeof(brought_up[0])); i++) {
             if (strstr(input, brought_up[i]) != NULL) {
                 position = strstr(input, brought_up[i]);
