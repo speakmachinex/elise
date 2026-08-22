@@ -1,6 +1,6 @@
 # Elise
 
-A simple chatbot inspired by Eliza, written in C.
+Inspired by Joseph Weizenbaum’s Eliza, Elise is a program written in C which accepts natural English as its input, and carries out a coherent conversation.
 
 ## Motivation
 Technology is reaching a precarious point, where most people are having a hard time understanding it. This will create uncertainty, and it will lead to problems, unless we address it. This is my attempt to do so.
