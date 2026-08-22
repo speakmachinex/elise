@@ -285,65 +285,65 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *emotional[] = {"bad", "terrible", "dreadful", "sad", "depressed",
-                                   "anxious", "shaky", "angry", "frustrated", "annoyed",
-                                   "mad", "scared", "horrified", "happy", "satisfied",
-                                   "delighted", "curious", "strange", "offended",
-                                   "apprehensive", "bored", "despair", "disappointed",
-                                   "dread", "elation", "elated", "embarrassed", "envious",
-                                   "excited", "fearful", "guilty", "hopeless", "hopeful", "hurt",
-                                   "insecure", "irritated", "joyful", "lonely", "powerless",
-                                   "regret", "relief", "relieved", "resentful", "satisfied",
-                                   "serene", "ashamed", "stressed", "tense", "worried",
-                                   "content", "ecstatic", "enthusiastic", "bliss",
-                                   "grateful", "thankful", "optimistic", "proud", "pride",
-                                   "relieved", "serene", "peaceful", "calm", "relaxed", 
-                                   "amused", "playful", "affectionate", "loving", "adoring",
-                                   "inspired", "motivated", "energized", "confident", 
-                                   "empowered", "radiant", "vibrant", "thrilled", "exhilarated",
-                                   "jubilant", "triumphnat", "blessed", "fulfilled", "rejuvenated",
-                                   "unhappy", "melancholic", "heartbroken", "grief", "sorrow",
-                                   "mournful", "despondent", "despair", "hope", "miserable",
-                                   "discouraged", "dismayed", "dejected", "downcase", "gloomy"};
-        for (int i = 0; i < (sizeof(emotional) / sizeof(emotional[0])); i++) {
-            if (strstr(input, emotinoal[i]) != NULL) {
+        const char *emo[] = {"bad", "terrible", "dreadful", "sad", "depressed",
+                             "anxious", "shaky", "angry", "frustrated", "annoyed",
+                             "mad", "scared", "horrified", "happy", "satisfied",
+                             "delighted", "curious", "strange", "offended",
+                             "apprehensive", "bored", "despair", "disappointed",
+                             "dread", "elation", "elated", "embarrassed", "envious",
+                             "excited", "fearful", "guilty", "hopeless", "hopeful", "hurt",
+                             "insecure", "irritated", "joyful", "lonely", "powerless",
+                             "regret", "relief", "relieved", "resentful", "satisfied",
+                             "serene", "ashamed", "stressed", "tense", "worried",
+                             "content", "ecstatic", "enthusiastic", "bliss",
+                             "grateful", "thankful", "optimistic", "proud", "pride",
+                             "relieved", "serene", "peaceful", "calm", "relaxed", 
+                             "amused", "playful", "affectionate", "loving", "adoring",
+                             "inspired", "motivated", "energized", "confident", 
+                             "empowered", "radiant", "vibrant", "thrilled", "exhilarated",
+                             "jubilant", "triumphnat", "blessed", "fulfilled", "rejuvenated",
+                             "unhappy", "melancholic", "heartbroken", "grief", "sorrow",
+                             "mournful", "despondent", "despair", "hope", "miserable",
+                             "discouraged", "dismayed", "dejected", "downcase", "gloomy"};
+        for (int i = 0; i < (sizeof(emo) / sizeof(emo[0])); i++) {
+            if (strstr(input, emo[i]) != NULL) {
                 int random = rand() % (8 + 1);
                 switch (random) {
                     case 0:
-                        printf("Can you tell me why you are feeling %s?\n", bad[i]);
+                        printf("Can you tell me why you are feeling %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 1:
-                        printf("Why are you feeling %s?\n", emotion[i]);
+                        printf("Why are you feeling %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 2:
-                        printf("Do you often find yourself feeling %s?\n", emotion[i]);
+                        printf("Do you often find yourself feeling %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 3:
-                        printf("Do you often feel %s?\n", emotion[i]);
+                        printf("Do you often feel %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 4:
-                        printf("Why do you feel %s?\n", emotion[i]);
+                        printf("Why do you feel %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 5:
-                        printf("Is this the first time you've felt %s?\n", emotion[i]);
+                        printf("Is this the first time you've felt %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 6:
-                        printf("Is it the first time you've felt %s?\n", emotion[i]);
+                        printf("Is it the first time you've felt %s?\n", emo[i]);
                         replied = 1;
                         break;
                     case 7:
-                        printf("Have you ever felt %s before?\n", emotion[i]);
+                        printf("Have you ever felt %s before?\n", emo[i]);
                         replied = 1;
                         break;
                     default:
-                        printf("What makes you feel %s?\n", emotion[i]);
-                        replied = 1:
+                        printf("What makes you feel %s?\n", emo[i]);
+                        replied = 1;
                         break;
                 }
             }
