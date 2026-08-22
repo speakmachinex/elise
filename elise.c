@@ -81,6 +81,10 @@ int main(void) {
 
     int said_hello = 0;
 
+    char *result;
+    result = malloc(MAX_INPUT);
+    char *position;
+
     printf("                                   \n");
     printf("███████╗██╗     ██╗███████╗███████╗\n");
     printf("██╔════╝██║     ██║██╔════╝██╔════╝\n");
@@ -213,9 +217,6 @@ int main(void) {
         const char *am[] = {"i am", "i'm"};
         for (int i = 0; i < (sizeof(am) / sizeof(am[0])); i++) {
             if (strstr(input, am[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, am[i]);
                 strcpy(result, position + (strlen(am[i]) + 1));
                 
@@ -241,9 +242,6 @@ int main(void) {
         const char *want[] = {"i want", "i need", "i desire", "i wish for", "i crave"};
         for (int i = 0; i < (sizeof(want) / sizeof(want[0])); i++) {
             if (strstr(input, want[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, want[i]);
                 strcpy(result, position + (strlen(want[i]) + 1));
                 
@@ -276,9 +274,6 @@ int main(void) {
                                  "i don't crave", "i do not crave"};
         for (int i = 0; i < (sizeof(notwant) / sizeof(notwant[0])); i++) {
             if (strstr(input, notwant[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, notwant[i]);
                 strcpy(result, position + (strlen(notwant[i]) + 1));
                 
@@ -307,9 +302,6 @@ int main(void) {
         const char *your[] = {"your", "yours"};
         for (int i = 0; i < (sizeof(your) / sizeof(your[0])); i++) {
             if (strstr(input, your[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, your[i]);
                 strcpy(result, position + (strlen(your[i]) + 1));
                 
@@ -339,9 +331,6 @@ int main(void) {
                                     "you mentioned", "you said"};
         for (int i = 0; i < (sizeof(brought_up) / sizeof(brought_up[0])); i++) {
             if (strstr(input, brought_up[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, brought_up[i]);
                 strcpy(result, position + (strlen(brought_up[i]) + 1));
                 
@@ -442,9 +431,6 @@ int main(void) {
         const char *not[] = {"you aren't", "you are not"};
         for (int i = 0; i < (sizeof(not) / sizeof(not[0])); i++) {
             if (strstr(input, not[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, not[i]);
                 strcpy(result, position + (strlen(not[i]) + 1));
                 printf("What makes you think I'm not %s?\n", result);
@@ -458,9 +444,6 @@ int main(void) {
         const char *are[] = {"you are", "you're"};
         for (int i = 0; i < (sizeof(are) / sizeof(are[0])); i++) {
             if (strstr(input, are[i]) != NULL) {
-                char *result;
-                result = malloc(MAX_INPUT);
-                char *position;
                 position = strstr(input, are[i]);
                 strcpy(result, position + (strlen(are[i]) + 1));
                 printf("What makes you think I'm %s?\n", result);
@@ -697,47 +680,27 @@ int main(void) {
                 switch (chance(3)) {
                     case 0:
                         printf("Go outside.\n");
-                        replied = 1;
                         break;
                     case 1:
                         printf("Go touch grass.\n");
-                        replied = 1;
                         break;
                     case 2:
                         printf("Go talk to women.\n");
-                        replied = 1;
                         break;
                     default:
                         printf("You spend too much time on the computer.\n");
-                        replied = 1;
                         break;
                 }
+
+                replied = 1;
+                break;
             }
         }
 
         if (replied == 1) continue;
+
         encourage();
     }
-
-    // Strip punctuation: .,;!?()
-
-    // When incorporating user input, translate terms such as "I" to "You"
-
-    // If negative outcome, such as "she gets into trouble", then ask
-    // What would it mean to you if "she gets into trouble?"
-
-    // If love mentioned -> "Do you feel worthy of love?"
-    // If "Yes/I do/Of course" -> "Go on."
-    // If "No/Not" -> "Why not?"
-    // If "Perhaps/Maybe/Aren't|Don't we all?" -> "What makes you uncertain?"
-
-    // If a "Why" question is asked, and an empty reply comes back, like "Because it does/Simply|Just because/because" -> "Don't other reasons come to mind? What other reasons might there be?"
-
-    // X made me do something.
-    // X made you do something?
-
-    // When the user types "bye" or "goodbye" the session is closed, and the conversation is
-    // dumped into a .txt file in the current directory
 
     return 0;
 }

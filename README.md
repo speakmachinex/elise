@@ -38,3 +38,14 @@ If you’re running Linux, this command should work.
 ```bash
 script -q -c './build/elise' output.txt
 ```
+
+## To-do
+
++ [ ] Strip punctuation: .,;!?()
++ [ ] If there is a negative outcome, such as "she gets into trouble", then ask “What would it mean to you if she gets into trouble?"
++ [ ] If love mentioned -> "Do you feel worthy of love?" -> 
++ [ ] If "Yes/I do/Of course" -> "Go on."
++ [ ] If "No/Not" -> "Why not?"
++ [ ] If "Perhaps/Maybe/Aren't|Don't we all?" -> "What makes you uncertain?"
++ [ ] If a "Why" question is asked, and an empty reply comes back, like "Because it does/Simply|Just because/because" -> "Don't other reasons come to mind? What other reasons might there be?"
++ [ ] X made me do something -> X made you do something? -> Translate `me` to `you`.
