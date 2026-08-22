@@ -10,7 +10,6 @@ Elise is a simple version of a chatbot. The program parses your inputs, and then
 By perusing the code, hopefully this will help shed some light on how this technology works at its most rudimentary level.
 
 ## Quick Start
-
 Navigate to the project directory, and create a binary file.
 
 ```bash
@@ -18,13 +17,12 @@ gcc elise.c -o build/elise && ./build/elise
 ```
 
 ## Usage
+Run the binary, and have fun. The program works best when the contents of the conversation revolves around emotions. In order to end the conversation you simply need to say “bye”, or “exit”.
 
-Run the binary, and have fun. Please bear in mind that the current version does not handle punctuation and upper case well.
-
-In order to end the conversation you simply need to say “bye”, or “exit”.
+## Known Issues
+Don’t use the arrow keys right now, instead just use `Backspace` to make corrections. Please bear in mind that the current version does not handle punctuation and upper case well.
 
 ## Contribution
-
 Would you like to help improve the responses? You can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve Elise’s dialogue skills.
 
 Please make sure not to include any personal information that you don’t want to be publicly known.
