@@ -102,10 +102,13 @@ int main(void) {
                     printf("It is generally considered rude to say hello many times.\n");
                     replied = 1;
                     break;
-                default:
+                case 3:
                     printf("Let's change the subject.\n");
                     replied = 1;
                     break;
+                case 4:
+                    printf("Au revoir.\n");
+                    exit(67);
             }
 
             said_hello++;
@@ -495,10 +498,57 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *games[] = {"assassin's creed", "animal crossing", "apex legends", 
+                               "bloodborne", "bioshock", 
+                               "call of duty", "counter-strike", 
+                               "dark souls", "dota", "donkey kong", "diablo ii", "diablo 2",
+                               "diablo iii", "diablo 3", "diablo iv", "diablo 4", 
+                               "final fantasy", "fallout", "factorio", "fortnite", 
+                               "gta", 
+                               "half-life", "half life", 
+                               "league of legends", "left 4 dead", "the last of us", 
+                               "minecraft", "monkey island", "mortal kombat", "mario kart", 
+                               "morrowind", "metal gear solid", "mass effect", 
+                               "overwatch", 
+                               "pokemon", 
+                               "resident evil", "roblox", "red dead redemption", 
+                               "the sims", "system shock", "super smash bros", "silent hill", 
+                               "starcraft", "skyrim", "super mario bros", "super metroid", 
+                               "tomb raider", "tetris", 
+                               "undertale", 
+                               "world of warcraft", "the witcher", 
+                               "xcom",
+                               "zelda"};
+
+        for (int i = 0; i < (sizeof(games) / sizeof(games[0])); i++) {
+            if (strstr(input, games[i]) != NULL) {
+                printf("Video games are for nerds. ");
+
+                int random = rand() % (4 + 1);
+                switch (random) {
+                    case 0:
+                        printf("Go outside.\n");
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("Go touch grass.\n");
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("Go talk to women.\n");
+                        replied = 1;
+                        break;
+                    default:
+                        printf("You spend too much time on the computer.\n");
+                        replied = 1;
+                        break;
+                }
+            }
+        }
+
+        if (replied == 1) continue;
         encourage();
     }
-
-    // Introduce knock knock -> who's there? meme
 
     // Have it respond to video game keywords like Minecraft.
 
