@@ -113,12 +113,30 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        if (strstr(input, "knock knock") != NULL) {
+            printf("Who's there?\n");
+
+            printf("\n> ");
+            fgets(input, MAX_INPUT, stdin);
+            strtok(input, "\n");
+
+            printf("%s who?\n", input);
+
+            printf("\n> ");
+            fgets(input, MAX_INPUT, stdin);
+            strtok(input, "\n");
+
+            printf("That's lame.\n");
+
+            continue;
+        }
+
         const char *harm[] = {"harm", "abuse", "abusive", "beat", "harass"};
         for (int i = 0; i < (sizeof(harm) / sizeof(harm[0])); i++) {
             if (strstr(input, harm[i]) != NULL) {
                 printf("I'm sorry to hear that. How does speaking about this make you feel?\n");
                 replied = 1;
-                break;
+                continue;
             }
         }
 
@@ -476,8 +494,13 @@ int main(void) {
         }
 
         if (replied == 1) continue;
+
         encourage();
     }
+
+    // Introduce knock knock -> who's there? meme
+
+    // Have it respond to video game keywords like Minecraft.
 
     // Strip punctuation: .,;!?()
 
