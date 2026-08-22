@@ -278,6 +278,38 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *your[] = {"your", "yours"};
+        for (int i = 0; i < (sizeof(your) / sizeof(your[0])); i++) {
+            if (strstr(input, your[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *position;
+                position = strstr(input, your[i]);
+                strcpy(result, position + (strlen(your[i]) + 1));
+                
+                switch(chance(3)) {
+                    case 0: 
+                        printf("Why are you concerned about my %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("Why do your thoughts wonder to my %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("Why did you think about my %s just now?\n", result);
+                        replied = 1;
+                        break;
+                    case 3:
+                        printf("Why does my %s come to mind?\n", result);
+                        replied = 1;
+                        break;
+                }
+            }
+        }
+
+        if (replied == 1) continue;
+
         const char *never[] = {"i have no", "i don't", "i've never", "i have never"};
         for (int i = 0; i < (sizeof(never) / sizeof(never[0])); i++) {
             if (strstr(input, never[i]) != NULL) {
