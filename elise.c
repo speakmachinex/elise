@@ -30,22 +30,22 @@ void encourage() {
             printf("Are you certain?\n");
             break;
         case 4:
-            printf("How so?");
+            printf("How so?\n");
             break;
         case 5:
-            printf("Can you give me an example?");
+            printf("Can you give me an example?\n");
             break;
         case 6:
-            printf("Could you provide an example?");
+            printf("Could you provide an example?\n");
             break;
         case 7:
-            printf("What does that suggest to you?");
+            printf("What does that suggest to you?\n");
             break;
         case 8:
-            printf("That is quite interesting.");
+            printf("That is quite interesting.\n");
             break;
         default:
-            printf("Please, continue.");
+            printf("Please, continue.\n");
             break;
     }
 

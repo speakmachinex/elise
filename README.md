@@ -18,3 +18,27 @@ gcc elise.c -o build/elise && ./build/elise
 ## Usage
 
 Run the binary, and have fun. Please bear in mind that the current version does not handle punctuation and upper case well.
+
+## Contribution
+
+Would you like to help improve the responses? You can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve Elise’s responses.
+
+Please make sure not to include any personal information that you don’t want to be publicly known.
+
+For macOS, here is the command, assuming you’re running it from the main project directory.
+
+```bash
+script -q output.txt ./build/elise
+```
+
+If you’re running Linux, this command should work.
+
+```bash
+script -q -c './build/elise' output.txt
+```
+
+If you’re unfortunate enough to run Windows, this _should_ be the PowerShell equivalent.
+
+```powershell
+.\build\elise.exe 2>&1 | Tee-Object -FilePath output.txt
+```
