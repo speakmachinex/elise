@@ -3,9 +3,11 @@
 Inspired by Joseph Weizenbaum’s Eliza, Elise is a program written in C which accepts natural English as its input, and carries out a coherent conversation.
 
 ## Motivation
-Technology is reaching a precarious point, where most people are having a hard time understanding it. This will create uncertainty, and it will lead to problems, unless we address it. This is my attempt to do so.
+Artificial intelligence is an inherently unintuitive technology to most people. According to Clarke’s third law, any sufficiently advanced technology is indistinguishable from magic. To most, it would seem that chatbots are magic-but this is not so.
 
-Elise, which is inspired by Eliza, is a simple version of a chatbot. The program parses your inputs, and then manipulates them in order to produce a convincing output. Hopefully, this will help shed some light on how this technology works.
+Elise is a simple version of a chatbot. The program parses your inputs, and then manipulates them in order to produce a convincing output. This involves not only “understanding” context, but also varying its output, in order to sound more natural.
+
+By perusing the code, hopefully this will help shed some light on how this technology works at its most rudimentary level.
 
 ## Quick Start
 
