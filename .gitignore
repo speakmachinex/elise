@@ -1,2 +1,3 @@
 .DS_Store
-main
+build/elise
+build/.DS_Store
