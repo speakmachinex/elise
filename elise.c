@@ -7,7 +7,7 @@
 #define MAX_INPUT 100
 
 void quit(char *response) {
-    const char *terminate[] = {"bye", "goodbye", "quit", "exit", "cya", "farewell"};
+    const char *terminate[] = {"bye", "goodbye", "quit", "exit", "cya", "farewell", "piss off"};
 
     for (int i = 0; i < (sizeof(terminate) / sizeof(terminate[0])); i++) {
         if (strcmp(response, terminate[i]) == 0) { exit(0); }
@@ -274,6 +274,18 @@ int main(void) {
 
         if (replied == 1) continue;
 
+
+        const char *anime[] = {"anime girl", "waifu"};
+        for (int i = 0; i < (sizeof(anime) / sizeof(anime[0])); i++) {
+            if (strstr(input, anime[i]) != NULL) {
+                printf("So when did you become a gooner?\n");
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
         const char *all[] = {"are all", "you all"};
         for (int i = 0; i < (sizeof(all) / sizeof(all[0])); i++) {
             if (strstr(input, all[i]) != NULL) {
@@ -289,50 +301,62 @@ int main(void) {
                              "affectionate", "adoring", "abandoned", "anguish", "aggravated",
                              "agitated", "astonished", "astounded", "awestruck", "awe", 
                              "appaled", "averse", "appreciated", "accepted", "alienated", 
+                             "ambivalent", "apathetic", "anticipatory", "alive", "adventurous",
                              "bad", "bored", "bliss", "blessed", "bitter", "bewildered", "betrayed",
-                             "belonging", 
+                             "belonging", "burdened", "balanced", "brave", "bold", 
                              "curious", "content", "calm", "confident", "crushed", "cranky",
                              "cynical", "contemptuous", "curious", "chagrined", "compassionate", 
-                             "caring", "connected", 
+                             "caring", "connected", "confused", "conflicted", "cautious", 
+                             "centered", "courageous", 
                              "dreadful", "delighted", "depressed", "despair", "disappointed",
                              "dread", "despondent", "despair", "discouraged", "dismay",
                              "dejected", "downcase", "disgruntled", "dumbfounded", "disgusted", 
-                             "disconnected", 
-                             "disdain", "disgraced", 
+                             "disconnected", "defeated", "doubtful", "distrustful", "drained", 
+                             "depleted", "daring", "devoted", 
+                             "disdain", "disgraced", "determined", 
                              "excited", "elation", "elated", "embarrassed", "envy", "envious",
                              "ecstatic", "enthusiastic", "energized", "empowered", "exhilarated",
-                             "empty", "exasperated", "excluded", "empathetic", "empathy", 
+                             "empty", "exasperated", "excluded", "empathetic", "empathy",
+                             "expectant", "eager", "exhausted", 
                              "frustrated", "fearful", "fulfilled", "forlorn", "furious",
-                             "fascinated", "flabbergasted", 
+                             "fascinated", "flabbergasted", "focused", "free", "fatigued", 
                              "grateful", "guilt", "grief", "gloomy", "grumpy", "grouchy",
+                             "grounded", 
                              "happy", "horrified", "hope", "hurt", "heartbroken", "hollow",
-                             "hostile", "humiliated", "humiliation",
+                             "hostile", "humiliated", "humiliation", "hesitant", "harmonious", 
                              "insecure", "irritated", "inspired", "isolated", "indignant",
                              "infuriated", "impatient", "intrigued", "inhibited", "inadequate",
-                             "inferior", "invisible", 
+                             "inferior", "invisible", "indifferent", "indecisive", "invigorated", 
+                             "intimate", 
                              "joyful", "jubilant", "jealous",
-                             "lonely", "loving", "livid", "loathing", 
+                             "lonely", "loving", "livid", "loathing", "longing", "liberated", 
+                             "lethargic", "listless", 
                              "mad", "motivated", "melancholic", "mournful", "miserable",
-                             "mortified", 
-                             "neglected", "numb",
-                             "offended", "optimistic", "outrage", "overlooked", 
+                             "mortified", "mindful", 
+                             "neglected", "numb", "nausea", "nostalgic", "nostalgia", 
+                             "offended", "optimistic", "outrage", "overlooked", "open", 
                              "powerless", "proud", "pride", "peaceful", "playful", "pissed",
-                             "perplexed", 
+                             "perplexed", "present", "passionate", 
                              "regret", "relief", "relieved", "resentful", "relaxed", "radiant",
-                             "rejuvenated", "remorse", "repulsed", "revolted", "neausea", 
-                             "repelled", "rejected", 
+                             "rejuvenated", "remorse", "repulsed", "revolted", "restless", 
+                             "repelled", "rejected", "resigned", "refreshed", "revitalized",
+                             "revitalised", "renewed", "receptive", "romantic", 
                              "satisfied", "scared", "shaky", "strange", "sad", "serene",
                              "stressed", "sorrow", "stunned", "shocked", "sickened",
-                             "self-conscious", "sheepish", "sympathetic", 
+                             "self-conscious", "sheepish", "sympathetic", "stuck", "skeptical", 
+                             "suspicious", "sluggish", "safe", "secure", 
                              "tense", "terrible", "thankful", "thrilled", "triumphnat", "tearful",
-                             "tenderness", 
-                             "unhappy", "upset", "unworthy",
+                             "tenderness", "torn", "trapped", "trusting", 
+                             "unhappy", "upset", "unworthy", "uncertain", 
                              "vibrant", "vengeful", "vindictive", "valued", 
-                             "worried", "weary", "worthless", "welcomed", };
+                             "worried", "weary", "worthless", "welcomed", "wistful", "willing", 
+                             "weighed down", 
+                             "yearning",
+                             "zestful"};
 
         for (int i = 0; i < (sizeof(emo) / sizeof(emo[0])); i++) {
             if (strstr(input, emo[i]) != NULL) {
-                int random = rand() % (8 + 1);
+                int random = rand() % (9 + 1);
                 switch (random) {
                     case 0:
                         printf("Can you tell me why you are feeling %s?\n", emo[i]);
@@ -364,6 +388,10 @@ int main(void) {
                         break;
                     case 7:
                         printf("Have you ever felt %s before?\n", emo[i]);
+                        replied = 1;
+                        break;
+                    case 8:
+                        printf("What makes you say that?\n");
                         replied = 1;
                         break;
                     default:
