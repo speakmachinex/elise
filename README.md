@@ -23,9 +23,7 @@ Run the binary, and have fun. Please bear in mind that the current version does 
 
 Would you like to help improve the responses? You can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve Elise’s dialogue skills.
 
-```disclaimer
 Please make sure not to include any personal information that you don’t want to be publicly known.
-```
 
 For macOS, here is the command, assuming you’re running it from the main project directory.
 
