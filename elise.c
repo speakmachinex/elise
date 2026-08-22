@@ -175,17 +175,6 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *emotion[] = {"sad", "depressed", "angry", "frustrated", "annoyed"};
-        for (int i = 0; i < (sizeof(emotion) / sizeof(emotion[0])); i++) {
-            if (strstr(input, emotion[i]) != NULL) {
-                printf("Why are you feeling %s?\n", emotion[i]);
-                replied = 1;
-                break;
-            }
-        }
-
-        if (replied == 1) continue;
-
         const char *dumb[] = {"dumb", "stupid", "silly", "idiotic", "useless"};
         const char *machine[] = {"machine", "computer", "clanker", "bot", "ai"};
         for (int i = 0; i < (sizeof(dumb) / sizeof(dumb[0])); i++) {
@@ -296,12 +285,45 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *bad[] = {"bad", "terrible", "dreadful"};
-        for (int i = 0; i < (sizeof(bad) / sizeof(bad[0])); i++) {
-            if (strstr(input, bad[i]) != NULL) {
-                printf("Can you tell me what is so %s about it?\n", bad[i]);
-                replied = 1;
-                break;
+        const char *emotional[] = {"bad", "terrible", "dreadful", "sad", "depressed",
+                                   "anxious", "shaky", "angry", "frustrated", "annoyed",
+                                   "mad", "scared", "horrified", "happy", "satisfied",
+                                   "delighted", "curious", "strange", "offended",
+                                   "apprehensive", "bored", "despair", "disappointed",
+                                   "dread", "elation", "embarrassed", "envious", "excited",
+                                   "fearful", "guilty", "hopeless", "hopeful", "hurt",
+                                   "insecure", "irritated", "joyful", "lonely", "powerless",
+                                   "regret", "relief", "relieved", "resentful", "satisfied",
+                                   "serene", "ashamed", "stressed", "tense", "worried"};
+        for (int i = 0; i < (sizeof(emotional) / sizeof(emotional[0])); i++) {
+            if (strstr(input, emotinoal[i]) != NULL) {
+                int random = rand() % (5 + 1);
+                switch (random) {
+                    case 0:
+                        printf("Can you tell me why you are feeling %s?\n", bad[i]);
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("Why are you feeling %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("Do you often find yourself feeling %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    case 3:
+                        printf("Do you often feel %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    case 4:
+                        printf("Why do you feel %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    default:
+                        printf("What makes you feel %s?\n", emotion[i]);
+                        replied = 1:
+                        break;
+                }
             }
         }
 
