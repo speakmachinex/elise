@@ -444,9 +444,24 @@ int main(void) {
             if (strstr(input, are[i]) != NULL) {
                 position = strstr(input, are[i]);
                 strcpy(result, position + (strlen(are[i]) + 1));
-                printf("What makes you think I'm %s?\n", result);
-                replied = 1;
-                break;
+
+                switch(chance(3)) {
+                    case 0:
+                        printf("What makes you think I'm %s?\n", result);
+                        break;
+                    case 1:
+                        printf("How does it make you feel, knowing that I'm %s?\n", result);
+                        break;
+                    case 2:
+                        printf("Does it make you happy to know that I'm %s?\n", result);
+                        break;
+                    case 3:
+                        printf("Does it worry you that I'm %s?\n", result);
+                        break;
+                }
+
+                    replied = 1;
+                    break;
             }
         }
 
