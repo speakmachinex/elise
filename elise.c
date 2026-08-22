@@ -302,7 +302,7 @@ int main(void) {
                              "agitated", "astonished", "astounded", "awestruck", "awe", 
                              "appaled", "averse", "appreciated", "accepted", "alienated", 
                              "ambivalent", "apathetic", "anticipatory", "alive", "adventurous",
-                             "abandoned", "attractive", "attracted". 
+                             "abandoned", "attractive", "attracted",
                              "bad", "bored", "bliss", "blessed", "bitter", "bewildered", "betrayed",
                              "belonging", "burdened", "balanced", "brave", "bold", 
                              "curious", "content", "calm", "confident", "crushed", "cranky",
