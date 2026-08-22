@@ -467,6 +467,34 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *not_know[] = {"don't you know", "dont you know", "do you not know"};
+        for (int i = 0; i < (sizeof(not_know) / sizeof(not_know[0])); i++) {
+            if (strstr(input, not_know[i]) != NULL) {
+                position = strstr(input, not_know[i]);
+                strcpy(result, position + (strlen(not_know[i]) + 1));
+
+                switch(chance(3)) {
+                    case 0:
+                        printf("Oh, I know?\n");
+                        break;
+                    case 1:
+                        printf("Should I know?\n");
+                        break;
+                    case 2:
+                        printf("What you know is far more important.\n");
+                        break;
+                    case 3:
+                        printf("What you know is more important.\n");
+                        break;
+                }
+
+                    replied = 1;
+                    break;
+            }
+        }
+
+        if (replied == 1) continue;
+
         const char *understand[] = {"do you understand", "do you know what i mean", "do you get it?"};
         for (int i = 0; i < (sizeof(understand) / sizeof(understand[0])); i++) {
             if (strstr(input, understand[i]) != NULL) {
