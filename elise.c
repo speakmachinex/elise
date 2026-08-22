@@ -290,14 +290,24 @@ int main(void) {
                                    "mad", "scared", "horrified", "happy", "satisfied",
                                    "delighted", "curious", "strange", "offended",
                                    "apprehensive", "bored", "despair", "disappointed",
-                                   "dread", "elation", "embarrassed", "envious", "excited",
-                                   "fearful", "guilty", "hopeless", "hopeful", "hurt",
+                                   "dread", "elation", "elated", "embarrassed", "envious",
+                                   "excited", "fearful", "guilty", "hopeless", "hopeful", "hurt",
                                    "insecure", "irritated", "joyful", "lonely", "powerless",
                                    "regret", "relief", "relieved", "resentful", "satisfied",
-                                   "serene", "ashamed", "stressed", "tense", "worried"};
+                                   "serene", "ashamed", "stressed", "tense", "worried",
+                                   "content", "ecstatic", "enthusiastic", "bliss",
+                                   "grateful", "thankful", "optimistic", "proud", "pride",
+                                   "relieved", "serene", "peaceful", "calm", "relaxed", 
+                                   "amused", "playful", "affectionate", "loving", "adoring",
+                                   "inspired", "motivated", "energized", "confident", 
+                                   "empowered", "radiant", "vibrant", "thrilled", "exhilarated",
+                                   "jubilant", "triumphnat", "blessed", "fulfilled", "rejuvenated",
+                                   "unhappy", "melancholic", "heartbroken", "grief", "sorrow",
+                                   "mournful", "despondent", "despair", "hope", "miserable",
+                                   "discouraged", "dismayed", "dejected", "downcase", "gloomy"};
         for (int i = 0; i < (sizeof(emotional) / sizeof(emotional[0])); i++) {
             if (strstr(input, emotinoal[i]) != NULL) {
-                int random = rand() % (5 + 1);
+                int random = rand() % (8 + 1);
                 switch (random) {
                     case 0:
                         printf("Can you tell me why you are feeling %s?\n", bad[i]);
@@ -317,6 +327,18 @@ int main(void) {
                         break;
                     case 4:
                         printf("Why do you feel %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    case 5:
+                        printf("Is this the first time you've felt %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    case 6:
+                        printf("Is it the first time you've felt %s?\n", emotion[i]);
+                        replied = 1;
+                        break;
+                    case 7:
+                        printf("Have you ever felt %s before?\n", emotion[i]);
                         replied = 1;
                         break;
                     default:
