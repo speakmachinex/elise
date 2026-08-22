@@ -5,18 +5,32 @@
 #include <ctype.h>
 
 #define MAX_INPUT 100
+int previous = -1;
+
+int chance(int maximum) {
+    int random = 0;
+
+    do {
+        random = rand() % (maximum + 1);
+    } while (random == previous);
+
+    previous = random;
+    return random;
+}
 
 void quit(char *response) {
     const char *terminate[] = {"bye", "goodbye", "quit", "exit", "cya", "farewell", "piss off"};
 
     for (int i = 0; i < (sizeof(terminate) / sizeof(terminate[0])); i++) {
-        if (strcmp(response, terminate[i]) == 0) { exit(0); }
+        if (strcmp(response, terminate[i]) == 0) {
+            printf("Au revoir, mon ami.\n");
+            exit(0);
+        }
     }
 }
 
 void encourage() {
-    int random = rand() % (10 + 1);
-    switch (random) {
+    switch (chance(9)) {
         case 0:
             printf("Please, go on.\n");
             break;
@@ -202,12 +216,10 @@ int main(void) {
             if (strstr(input, dumb[i]) != NULL) {
                 for (int i = 0; i < (sizeof(machine) / sizeof(machine[0])); i++) {
                     if (strstr(input, machine[i]) != NULL) {
-                        int random = rand() % (6 + 1);
-                        switch (random) {
+                        switch (chance(5)) {
                             case 0:
                                 printf("Do %ss ", machine[i]);
-                                random = rand() % (4 + 1);
-                                switch (random) {
+                                switch (chance(3)) {
                                     case 0: printf("frighten you"); break;
                                     case 1: printf("worry you"); break;
                                     case 2: printf("scare you"); break;
@@ -222,8 +234,7 @@ int main(void) {
                                 break;
                             case 2:
                                 printf("Are you ");
-                                random = rand() % (4 + 1);
-                                switch (random) {
+                                switch (chance(3)) {
                                     case 0: printf("frighten by"); break;
                                     case 1: printf("scared by"); break;
                                     case 2: printf("worried about"); break;
@@ -381,8 +392,7 @@ int main(void) {
 
         for (int i = 0; i < (sizeof(emo) / sizeof(emo[0])); i++) {
             if (strstr(input, emo[i]) != NULL) {
-                int random = rand() % (9 + 1);
-                switch (random) {
+                switch (chance(9)) {
                     case 0:
                         printf("Can you tell me why you are feeling %s?\n", emo[i]);
                         replied = 1;
@@ -432,8 +442,7 @@ int main(void) {
         const char *friend[] = {"friends", "friend"};
         for (int i = 0; i < (sizeof(friend) / sizeof(friend[0])); i++) {
             if (strstr(input, friend[i]) != NULL) {
-                int random = rand() % (6 + 1);
-                switch (random) {
+                switch (chance(5)) {
                     case 0:
                         printf("Why do you bring up the topic of friends?\n");
                         replied = 1;
@@ -467,8 +476,7 @@ int main(void) {
         const char *odds[] = {"are the odds", "how likely", "is it possible", "is it likely"};
         for (int i = 0; i < (sizeof(odds) / sizeof(odds[0])); i++) {
             if (strstr(input, odds[i]) != NULL) {
-                int random = rand() % (3 + 1);
-                switch (random) {
+                switch (chance(4)) {
                     case 0:
                         printf("I'd say the odds are about ");
                         replied = 1;
@@ -491,8 +499,7 @@ int main(void) {
                         break;
                 }
 
-                random = rand() % (100 + 1);
-                printf("%d%%", random);
+                printf("%d%%", chance(100));
             }
         }
 
@@ -524,8 +531,7 @@ int main(void) {
             if (strstr(input, games[i]) != NULL) {
                 printf("Video games are for nerds. ");
 
-                int random = rand() % (4 + 1);
-                switch (random) {
+                switch (chance(3)) {
                     case 0:
                         printf("Go outside.\n");
                         replied = 1;
