@@ -62,7 +62,6 @@ void encourage() {
             printf("Please, continue.\n");
             break;
     }
-
 }
 
 // void lowercase(char *response, char *input) {
@@ -172,17 +171,6 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *never[] = {"i have no", "i don't", "i've never", "i have never"};
-        for (int i = 0; i < (sizeof(never) / sizeof(never[0])); i++) {
-            if (strstr(input, never[i]) != NULL) {
-                printf("Why do you think that is?\n");
-                replied = 1;
-                break;
-            }
-        }
-
-        if (replied == 1) continue;
-
         const char *angry[] = {"fuck", "cunt", "shit"};
         for (int i = 0; i < (sizeof(angry) / sizeof(angry[0])); i++) {
             if (strstr(input, angry[i]) != NULL) {
@@ -202,7 +190,98 @@ int main(void) {
                 char *position;
                 position = strstr(input, am[i]);
                 strcpy(result, position + (strlen(am[i]) + 1));
-                printf("How long have you been %s?\n", result);
+                
+                switch(chance(2)) {
+                    case 0: 
+                        printf("How long have you been %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("Did you come to me because you are %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("Are you here because you are %s?\n", result);
+                        replied = 1;
+                        break;
+                }
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *want[] = {"i want", "i need", "i desire", "i wish for", "i crave"};
+        for (int i = 0; i < (sizeof(want) / sizeof(want[0])); i++) {
+            if (strstr(input, want[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *position;
+                position = strstr(input, want[i]);
+                strcpy(result, position + (strlen(want[i]) + 1));
+                
+                switch(chance(3)) {
+                    case 0: 
+                        printf("What would it mean to you if you got %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("How would you feel if you got %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("How would your life change if you got %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 3:
+                        printf("How would it help you if you got %s?\n", result);
+                        replied = 1;
+                        break;
+                }
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *notwant[] = {"i don't want", "i do not want",
+                                 "i don't need", "i do not need", 
+                                 "i don't desire", "i do not desire", 
+                                 "i don't wish for", "i do not wish for", 
+                                 "i don't crave", "i do not crave"};
+        for (int i = 0; i < (sizeof(notwant) / sizeof(notwant[0])); i++) {
+            if (strstr(input, notwant[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *position;
+                position = strstr(input, notwant[i]);
+                strcpy(result, position + (strlen(notwant[i]) + 1));
+                
+                switch(chance(3)) {
+                    case 0: 
+                        printf("What would it mean to you if you did not get %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("How would you feel if you didn't get %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("How would your life change if you didn't get %s?\n", result);
+                        replied = 1;
+                        break;
+                    case 3:
+                        printf("How would it harm you if you didn't get %s?\n", result);
+                        replied = 1;
+                        break;
+                }
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *never[] = {"i have no", "i don't", "i've never", "i have never"};
+        for (int i = 0; i < (sizeof(never) / sizeof(never[0])); i++) {
+            if (strstr(input, never[i]) != NULL) {
+                printf("Why do you think that is?\n");
                 replied = 1;
                 break;
             }
@@ -555,8 +634,6 @@ int main(void) {
         if (replied == 1) continue;
         encourage();
     }
-
-    // Have it respond to video game keywords like Minecraft.
 
     // Strip punctuation: .,;!?()
 
