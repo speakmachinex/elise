@@ -77,7 +77,7 @@ int main(void) {
     printf("╚══════╝╚══════╝╚═╝╚══════╝╚══════╝\n");
     printf("                                   \n");
 
-    printf("Hi! My name is Elise. What seems to be your boggle?\n");
+    printf("Hi, my name is Elise. How are you feeling today?\n");
 
     while (1) {
         int replied = 0;
