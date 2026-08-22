@@ -113,7 +113,7 @@ int main(void) {
         int replied = 0;
         display("\n> ");
         fgets(input, MAX_INPUT, stdin);
-        strtok(input, "\n");
+        strtok(input, "\n.,!?'\"");
         lowercase(input);
         // printf("You said: %s\n", input);
         quit(input);

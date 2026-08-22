@@ -20,7 +20,7 @@ gcc elise.c -o build/elise && ./build/elise
 Run the binary, and have fun. The program works best when the contents of the conversation revolves around emotions. In order to end the conversation you simply need to say “bye”, or “exit”.
 
 ## Known Issues
-Don’t use the arrow keys right now, instead just use `Backspace` to make corrections. Please bear in mind that the current version does not handle punctuation very well.
+Don’t use the arrow keys right now, instead just use `Backspace` to make corrections.
 
 ## Contribution
 Would you like to help improve the responses? You can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve Elise’s dialogue skills.
@@ -41,7 +41,6 @@ script -q -c './build/elise' output.txt
 
 ## To-do
 
-+ [ ] Strip punctuation: .,;!?()
 + [ ] If there is a negative outcome, such as "she gets into trouble", then ask “What would it mean to you if she gets into trouble?"
 + [ ] If love mentioned -> "Do you feel worthy of love?" -> 
 + [ ] If "Yes/I do/Of course" -> "Go on."
