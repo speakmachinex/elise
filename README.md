@@ -21,6 +21,8 @@ gcc elise.c -o build/elise && ./build/elise
 
 Run the binary, and have fun. Please bear in mind that the current version does not handle punctuation and upper case well.
 
+In order to end the conversation you simply need to say “bye”, or “exit”.
+
 ## Contribution
 
 Would you like to help improve the responses? You can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve Elise’s dialogue skills.
