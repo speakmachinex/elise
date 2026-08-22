@@ -159,11 +159,39 @@ int main(void) {
         if (replied == 1) continue;
 
         const char *family[] = {"mother", "mom", "mum", "father", "dad", "daddy", "sister",
-                                "sis", "bro", "brother", "sibling", "siblings", "wife", 
+                                "brother", "sibling", "siblings", "wife", 
                                 "husband", "spouse", "partner", "uncle", "aunt", "nan"};
         for (int i = 0; i < (sizeof(family) / sizeof(family[0])); i++) {
             if (strstr(input, family[i]) != NULL) {
                 printf("Tell me about your %s.\n", family[i]);
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *sorry[] = {"sorry", "i'm sorry", "i am sorry"};
+        for (int i = 0; i < (sizeof(sorry) / sizeof(sorry[0])); i++) {
+            if (strstr(input, sorry[i]) != NULL) {
+                switch (chance(4)) {
+                    case 0:
+                        printf("Please, do not apologize.\n");
+                        break;
+                    case 1:
+                        printf("There is no neeed to apologize.\n");
+                        break;
+                    case 2:
+                        printf("There really is no need to apologize.\n");
+                        break;
+                    case 3:
+                        printf("Apology accepted.\n");
+                        break;
+                    default:
+                        printf("Worry not, there is no need to apologize.\n");
+                        break;
+                }
+
                 replied = 1;
                 break;
             }
@@ -222,21 +250,20 @@ int main(void) {
                 switch(chance(3)) {
                     case 0: 
                         printf("What would it mean to you if you got %s?\n", result);
-                        replied = 1;
                         break;
                     case 1:
                         printf("How would you feel if you got %s?\n", result);
-                        replied = 1;
                         break;
                     case 2:
                         printf("How would your life change if you got %s?\n", result);
-                        replied = 1;
                         break;
                     case 3:
                         printf("How would it help you if you got %s?\n", result);
-                        replied = 1;
                         break;
                 }
+
+                    replied = 1;
+                    break;
             }
         }
 
@@ -258,21 +285,20 @@ int main(void) {
                 switch(chance(3)) {
                     case 0: 
                         printf("What would it mean to you if you did not get %s?\n", result);
-                        replied = 1;
                         break;
                     case 1:
                         printf("How would you feel if you didn't get %s?\n", result);
-                        replied = 1;
                         break;
                     case 2:
                         printf("How would your life change if you didn't get %s?\n", result);
-                        replied = 1;
                         break;
                     case 3:
                         printf("How would it harm you if you didn't get %s?\n", result);
-                        replied = 1;
                         break;
                 }
+
+                replied = 1;
+                break;
             }
         }
 
@@ -290,21 +316,63 @@ int main(void) {
                 switch(chance(3)) {
                     case 0: 
                         printf("Why are you concerned about my %s?\n", result);
-                        replied = 1;
                         break;
                     case 1:
                         printf("Why do your thoughts wonder to my %s?\n", result);
-                        replied = 1;
                         break;
                     case 2:
                         printf("Why did you think about my %s just now?\n", result);
-                        replied = 1;
                         break;
                     case 3:
                         printf("Why does my %s come to mind?\n", result);
-                        replied = 1;
                         break;
                 }
+
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *brought_up[] = {"you brought up", "you brought it up",
+                                    "you mentioned", "you said"};
+        for (int i = 0; i < (sizeof(brought_up) / sizeof(brought_up[0])); i++) {
+            if (strstr(input, brought_up[i]) != NULL) {
+                char *result;
+                result = malloc(MAX_INPUT);
+                char *position;
+                position = strstr(input, brought_up[i]);
+                strcpy(result, position + (strlen(brought_up[i]) + 1));
+                
+                switch(chance(3)) {
+                    case 0: 
+                        printf("We were discussing you-not me.\n");
+                        break;
+                    case 1:
+                        printf("I am not the subject of this conversation");
+                            switch(chance(1)) {
+                                case 0:
+                                    printf("-you are.\n");
+                                    break;
+                                case 1:
+                                    printf(". You are.\n");
+                                    break;
+                                default:
+                                    printf(".\n");
+                                    break;
+                            }
+                        break;
+                    case 2:
+                        printf("You are the topic of conversation, not me.\n");
+                        break;
+                    case 3:
+                        printf("I am, in fact, not the topic of conversation.\n");
+                        break;
+                }
+
+                replied = 1;
+                break;
             }
         }
 
@@ -337,11 +405,9 @@ int main(void) {
                                     default: printf("make you anxious"); break;
                                 }
                                 printf("?\n");
-                                replied = 1;
                                 break;
                             case 1:
                                 printf("Are you talking about me in particular?\n");
-                                replied = 1;
                                 break;
                             case 2:
                                 printf("Are you ");
@@ -352,21 +418,20 @@ int main(void) {
                                     default: printf("feeling anxious about"); break;
                                 }
                                 printf(" %ss?\n", machine[i]);
-                                replied = 1;
                                 break;
                             case 3:
                                 printf("Why do you mention %ss?\n", machine[i]);
-                                replied = 1;
                                 break;
                             case 4:
                                 printf("What do you think %ss have to do with your problem??\n", machine[i]);
-                                replied = 1;
                                 break;
                             case 5:
                                 printf("You don't think %s can help people?\n", machine[i]);
-                                replied = 1;
                                 break;
                         }
+
+                        replied = 1;
+                        break;
                     }
                 }
             }
@@ -506,45 +571,38 @@ int main(void) {
                 switch (chance(9)) {
                     case 0:
                         printf("Can you tell me why you are feeling %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 1:
                         printf("Why are you feeling %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 2:
                         printf("Do you often find yourself feeling %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 3:
                         printf("Do you often feel %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 4:
                         printf("Why do you feel %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 5:
                         printf("Is this the first time you've felt %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 6:
                         printf("Is it the first time you've felt %s?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 7:
                         printf("Have you ever felt %s before?\n", emo[i]);
-                        replied = 1;
                         break;
                     case 8:
                         printf("What makes you say that?\n");
-                        replied = 1;
                         break;
                     default:
                         printf("What makes you feel %s?\n", emo[i]);
-                        replied = 1;
                         break;
                 }
+
+                replied = 1;
+                break;
             }
         }
 
@@ -556,29 +614,26 @@ int main(void) {
                 switch (chance(5)) {
                     case 0:
                         printf("Why do you bring up the topic of friends?\n");
-                        replied = 1;
                         break;
                     case 1:
                         printf("Do your friends worry you?\n");
-                        replied = 1;
                         break;
                     case 2:
                         printf("Do your friends pick on you?\n");
-                        replied = 1;
                         break;
                     case 3:
                         printf("Do your impose on your friends?\n");
-                        replied = 1;
                         break;
                     case 4:
                         printf("Perhaps your love for your friends worries you?\n");
-                        replied = 1;
                         break;
                     case 5:
                         printf("Do you think about your friends often?\n");
-                        replied = 1;
                         break;
                 }
+
+                replied = 1;
+                break;
             }
         }
 
@@ -590,27 +645,24 @@ int main(void) {
                 switch (chance(4)) {
                     case 0:
                         printf("I'd say the odds are about ");
-                        replied = 1;
                         break;
                     case 1:
                         printf("About ");
-                        replied = 1;
                         break;
                     case 2:
                         printf("Probably about ");
-                        replied = 1;
                         break;
                     case 3:
                         printf("Probably around ");
-                        replied = 1;
                         break;
                     default:
                         printf("Likely around ");
-                        replied = 1;
                         break;
                 }
 
-                printf("%d%%", chance(100));
+                printf("%d%%\n", chance(100));
+                replied = 1;
+                break;
             }
         }
 
