@@ -15,7 +15,7 @@ void quit(char *response) {
 }
 
 void encourage() {
-    int random = rand() % (6 + 1);
+    int random = rand() % (10 + 1);
     switch (random) {
         case 0:
             printf("Please, go on.\n");
@@ -37,6 +37,12 @@ void encourage() {
             break;
         case 6:
             printf("Could you provide an example?");
+            break;
+        case 7:
+            printf("What does that suggest to you?");
+            break;
+        case 8:
+            printf("That is quite interesting.");
             break;
         default:
             printf("Please, continue.");
@@ -186,9 +192,49 @@ int main(void) {
             if (strstr(input, dumb[i]) != NULL) {
                 for (int i = 0; i < (sizeof(machine) / sizeof(machine[0])); i++) {
                     if (strstr(input, machine[i]) != NULL) {
-                        printf("Do computers frighten you?\n");
-                        replied = 1;
-                        break;
+                        int random = rand() % (6 + 1);
+                        switch (random) {
+                            case 0:
+                                printf("Do %ss ", machine[i]);
+                                random = rand() % (4 + 1);
+                                switch (random) {
+                                    case 0: printf("frighten you"); break;
+                                    case 1: printf("worry you"); break;
+                                    case 2: printf("scare you"); break;
+                                    default: printf("make you anxious"); break;
+                                }
+                                printf("?\n");
+                                replied = 1;
+                                break;
+                            case 1:
+                                printf("Are you talking about me in particular?\n");
+                                replied = 1;
+                                break;
+                            case 2:
+                                printf("Are you ");
+                                random = rand() % (4 + 1);
+                                switch (random) {
+                                    case 0: printf("frighten by"); break;
+                                    case 1: printf("scared by"); break;
+                                    case 2: printf("worried about"); break;
+                                    default: printf("feeling anxious about"); break;
+                                }
+                                printf(" %ss?\n", machine[i]);
+                                replied = 1;
+                                break;
+                            case 3:
+                                printf("Why do you mention %ss?\n", machine[i]);
+                                replied = 1;
+                                break;
+                            case 4:
+                                printf("What do you think %ss have to do with your problem??\n", machine[i]);
+                                replied = 1;
+                                break;
+                            case 5:
+                                printf("You don't think %s can help people?\n", machine[i]);
+                                replied = 1;
+                                break;
+                        }
                     }
                 }
             }
@@ -250,10 +296,87 @@ int main(void) {
 
         if (replied == 1) continue;
 
+        const char *bad[] = {"bad", "terrible", "dreadful"};
+        for (int i = 0; i < (sizeof(bad) / sizeof(bad[0])); i++) {
+            if (strstr(input, bad[i]) != NULL) {
+                printf("Can you tell me what is so %s about it?\n", bad[i]);
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *friend[] = {"friends", "friend"};
+        for (int i = 0; i < (sizeof(friend) / sizeof(friend[0])); i++) {
+            if (strstr(input, friend[i]) != NULL) {
+                int random = rand() % (6 + 1);
+                switch (random) {
+                    case 0:
+                        printf("Why do you bring up the topic of friends?\n");
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("Do your friends worry you?\n");
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("Do your friends pick on you?\n");
+                        replied = 1;
+                        break;
+                    case 3:
+                        printf("Do your impose on your friends?\n");
+                        replied = 1;
+                        break;
+                    case 4:
+                        printf("Perhaps your love for your friends worries you?\n");
+                        replied = 1;
+                        break;
+                    case 5:
+                        printf("Do you think about your friends often?\n");
+                        replied = 1;
+                        break;
+                }
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *odds[] = {"are the odds", "how likely", "is it possible", "is it likely"};
+        for (int i = 0; i < (sizeof(odds) / sizeof(odds[0])); i++) {
+            if (strstr(input, odds[i]) != NULL) {
+                int random = rand() % (3 + 1);
+                switch (random) {
+                    case 0:
+                        printf("I'd say the odds are about ");
+                        replied = 1;
+                        break;
+                    case 1:
+                        printf("About ");
+                        replied = 1;
+                        break;
+                    case 2:
+                        printf("Probably about ");
+                        replied = 1;
+                        break;
+                    case 3:
+                        printf("Probably around ");
+                        replied = 1;
+                        break;
+                    default:
+                        printf("Likely around ");
+                        replied = 1;
+                        break;
+                }
+
+                random = rand() % (100 + 1);
+                printf("%d%%", random);
+            }
+        }
+
+        if (replied == 1) continue;
         encourage();
     }
-
-
 
     // Strip punctuation: .,;!?()
 
@@ -267,7 +390,7 @@ int main(void) {
     // If "No/Not" -> "Why not?"
     // If "Perhaps/Maybe/Aren't|Don't we all?" -> "What makes you uncertain?"
 
-    // If a "Why" question is asked, and an empty reply comes back, like "Because it does/Simply because/because" -> "Don't other reasons come to mind? What other reasons might there be?"
+    // If a "Why" question is asked, and an empty reply comes back, like "Because it does/Simply|Just because/because" -> "Don't other reasons come to mind? What other reasons might there be?"
 
     // X made me do something.
     // X made you do something?
