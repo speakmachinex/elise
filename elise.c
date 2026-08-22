@@ -113,7 +113,7 @@ int main(void) {
         int replied = 0;
         display("\n> ");
         fgets(input, MAX_INPUT, stdin);
-        strtok(input, "\n.,!?'\"");
+        strtok(input, "\n.!?\"");
         lowercase(input);
         // printf("You said: %s\n", input);
         quit(input);
@@ -144,6 +144,17 @@ int main(void) {
 
             display(message);
             said_hello++;
+        }
+
+        if (replied == 1) continue;
+
+        const char *anime[] = {"anime girl", "waifu"};
+        for (int i = 0; i < (sizeof(anime) / sizeof(anime[0])); i++) {
+            if (strstr(input, anime[i]) != NULL) {
+                display("So when did you become a gooner?\n");
+                replied = 1;
+                break;
+            }
         }
 
         if (replied == 1) continue;
@@ -232,31 +243,31 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *am[] = {"i am", "i'm"};
-        for (int i = 0; i < (sizeof(am) / sizeof(am[0])); i++) {
-            if (strstr(input, am[i]) != NULL) {
-                position = strstr(input, am[i]);
-                strcpy(result, position + (strlen(am[i]) + 1));
-                
-                switch(chance(2)) {
-                    case 0: 
-                        sprintf(message, "How long have you been %s?\n", result);
-                        break;
-                    case 1:
-                        sprintf(message, "Did you come to me because you are %s?\n", result);
-                        break;
-                    case 2:
-                        sprintf(message, "Are you here because you are %s?\n", result);
-                        break;
-                }
-
-                display(message);
-                replied = 1;
-                break;
-            }
-        }
-
-        if (replied == 1) continue;
+        // const char *am[] = {"i am", "i'm"};
+        // for (int i = 0; i < (sizeof(am) / sizeof(am[0])); i++) {
+        //     if (strstr(input, am[i]) != NULL) {
+        //         position = strstr(input, am[i]);
+        //         strcpy(result, position + (strlen(am[i]) + 1));
+        //
+        //         switch(chance(2)) {
+        //             case 0: 
+        //                 sprintf(message, "How long have you been %s?\n", result);
+        //                 break;
+        //             case 1:
+        //                 sprintf(message, "Did you come to me because you are %s?\n", result);
+        //                 break;
+        //             case 2:
+        //                 sprintf(message, "Are you here because you are %s?\n", result);
+        //                 break;
+        //         }
+        //
+        //         display(message);
+        //         replied = 1;
+        //         break;
+        //     }
+        // }
+        //
+        // if (replied == 1) continue;
 
         const char *want[] = {"i want", "i need", "i desire", "i wish for", "i crave"};
         for (int i = 0; i < (sizeof(want) / sizeof(want[0])); i++) {
@@ -539,16 +550,6 @@ int main(void) {
         if (replied == 1) continue;
 
 
-        const char *anime[] = {"anime girl", "waifu"};
-        for (int i = 0; i < (sizeof(anime) / sizeof(anime[0])); i++) {
-            if (strstr(input, anime[i]) != NULL) {
-                display("So when did you become a gooner?\n");
-                replied = 1;
-                break;
-            }
-        }
-
-        if (replied == 1) continue;
 
         const char *all[] = {"are all", "you all"};
         for (int i = 0; i < (sizeof(all) / sizeof(all[0])); i++) {
