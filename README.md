@@ -25,7 +25,11 @@ Run the binary, and have fun. The program works best when the contents of the co
 Don’t use the arrow keys right now, instead just use `Backspace` to make corrections.
 
 ## Contribution
-Would you like to help improve the responses? You can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve Elise’s dialogue skills.
+There are two says in which you can contribute to Elise, if you so choose. The first is by submitting a pull request. If you wish to do so, there are two rules to follow.
+
+First, you must submit an issue first. If accepted, then you can submit the code via a pull request. Secondly, no AI usage is allowed.
+
+Alternatively, if you would like to help improve Elise’s responses, you can run a simple command which will record the output, and save it into a .txt file. You can then email it to me, and I can use that to improve the program’s dialogue skills.
 
 Please make sure not to include any personal information that you don’t want to be publicly known.
 
