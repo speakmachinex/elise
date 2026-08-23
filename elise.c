@@ -40,8 +40,6 @@ void choose(char *letters) {
 }
 
 void display(char *message) {
-
-
     int speed;
 
     while (*message) {
