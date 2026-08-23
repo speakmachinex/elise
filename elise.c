@@ -7,6 +7,8 @@
 
 #define MAX_INPUT 100
 int previous = -1;
+int error_rate = 100;
+int error_correction = 1;
 
 int chance(int maximum) {
     int random = 0;
@@ -19,7 +21,26 @@ int chance(int maximum) {
     return random;
 }
 
+void initelise(void) {
+    error_rate -= chance(10);
+    error_correction -= chance(1);
+}
+
+void choose(char *letters) {
+    int position = chance(strlen(letters));
+    printf("%c", letters[position]);
+    fflush(stdout);
+
+    switch(error_correction) {
+        case 0:
+            usleep(500000 + chance(100000));
+            printf("\b");
+            usleep(200000 + chance(100000));
+    }
+}
+
 void display(char *message) {
+
 
     int speed;
 
@@ -28,6 +49,92 @@ void display(char *message) {
         speed = 17000 + chance(30000);
         usleep(speed);
         fflush(stdout);
+        
+        switch(chance(error_rate)) {
+            case 0:
+                switch(*message) {
+                    case 'a':
+                        choose("aqwedscxz");
+                        break;
+                    case 'b':
+                        choose("bvghn");
+                        break;
+                    case 'c':
+                        choose("cxdfv");
+                        break;
+                    case 'd':
+                        choose("dserfcx");
+                        break;
+                    case 'e':
+                        choose("ewsdr");
+                        break;
+                    case 'f':
+                        choose("fdrtgvc");
+                        break;
+                    case 'g':
+                        choose("gftyhbv");
+                        break;
+                    case 'h':
+                        choose("hgyujnb");
+                        break;
+                    case 'i':
+                        choose("iujklo");
+                        break;
+                    case 'j':
+                        choose("jhuilkmnh");
+                        break;
+                    case 'k':
+                        choose("kjiol,m");
+                        break;
+                    case 'l':
+                        choose("lkop;.,");
+                        break;
+                    case 'm':
+                        choose("mnjk,");
+                        break;
+                    case 'n':
+                        choose("nbhjm");
+                        break;
+                    case 'o':
+                        choose("oiklp");
+                        break;
+                    case 'p':
+                        choose("pol;[");
+                        break;
+                    case 'q':
+                        choose("qaswe");
+                        break;
+                    case 'r':
+                        choose("redft");
+                        break;
+                    case 's':
+                        choose("sazxdew");
+                        break;
+                    case 't':
+                        choose("trfghy");
+                        break;
+                    case 'u':
+                        choose("uyhjki");
+                        break;
+                    case 'v':
+                        choose("vcfgb");
+                        break;
+                    case 'w':
+                        choose("wqasde");
+                        break;
+                    case 'x':
+                        choose("xzsdc");
+                        break;
+                    case 'y':
+                        choose("ytghju");
+                        break;
+                    case 'z':
+                        choose("zasx");
+                        break;
+                }
+            break;
+        }
+
         message++;
     }
 }
@@ -106,6 +213,8 @@ int main(void) {
     printf("███████╗███████╗██║███████║███████╗\n");
     printf("╚══════╝╚══════╝╚═╝╚══════╝╚══════╝\n");
     printf("                                   \n");
+
+    initelise();
 
     display("Hi, my name is Elise. ");
 
