@@ -70,7 +70,7 @@ void encourage() {
             display("What does that suggest to you?\n");
             break;
         case 8:
-            display("That is quite interesting.\n");
+            display("That is rather interesting. Please, go on.\n");
             break;
         default:
             display("Please, continue.\n");

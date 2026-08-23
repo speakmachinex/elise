@@ -1,5 +1,7 @@
 # Elise
 
+![elise screenshot](img/elise.png)
+
 Inspired by Joseph Weizenbaum’s Eliza, Elise is a program written in C which accepts natural English as its input, and carries out a coherent conversation.
 
 ## Motivation
