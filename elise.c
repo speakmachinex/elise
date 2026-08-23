@@ -107,7 +107,28 @@ int main(void) {
     printf("╚══════╝╚══════╝╚═╝╚══════╝╚══════╝\n");
     printf("                                   \n");
 
-    display("Hi, my name is Elise. How are you feeling today?\n");
+    display("Hi, my name is Elise. ");
+
+    switch(chance(5)) {
+        case 0:
+            display("How are you feeling today?\n");
+            break;
+        case 1:
+            display("Tell me about your thoughts.\n");
+            break;
+        case 2:
+            display("Do you feel happy?\n");
+            break;
+        case 3:
+            display("Are we feeling marvellous today?\n");
+            break;
+        case 4:
+            display("Tell me, are you happy?\n");
+            break;
+        case 5:
+            display("How are we coping today?\n");
+            break;
+    }
 
     while (1) {
         int replied = 0;
@@ -269,7 +290,8 @@ int main(void) {
         //
         // if (replied == 1) continue;
 
-        const char *want[] = {"i want", "i need", "i desire", "i wish for", "i crave"};
+        const char *want[] = {"i wanted", "i want", "i needed", "i need", "i desired", 
+                              "i desire", "i wished for", "i wish for", "i craved", "i crave"};
         for (int i = 0; i < (sizeof(want) / sizeof(want[0])); i++) {
             if (strstr(input, want[i]) != NULL) {
                 position = strstr(input, want[i]);
@@ -599,7 +621,7 @@ int main(void) {
                              "lonely", "loving", "livid", "loathing", "longing", "liberated", 
                              "lethargic", "listless", 
                              "mad", "motivated", "melancholic", "mournful", "miserable",
-                             "mortified", "mindful", 
+                             "mortified", "mindful", "marvellous", 
                              "neglected", "numb", "nausea", "nostalgic", "nostalgia",
                              "nurturing", 
                              "offended", "optimistic", "outrage", "overlooked", "open", 
@@ -649,9 +671,6 @@ int main(void) {
                         break;
                     case 7:
                         sprintf(message, "Have you ever felt %s before?\n", emo[i]);
-                        break;
-                    case 8:
-                        sprintf(message, "What makes you say that?\n");
                         break;
                     default:
                         sprintf(message, "What makes you feel %s?\n", emo[i]);
