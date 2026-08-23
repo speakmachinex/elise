@@ -278,7 +278,7 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *anime[] = {"anime girl", "waifu"};
+        const char *anime[] = {"anime", "waifu"};
         for (int i = 0; i < (sizeof(anime) / sizeof(anime[0])); i++) {
             if (strstr(input, anime[i]) != NULL) {
                 display("So when did you become a gooner?\n");
@@ -461,35 +461,6 @@ int main(void) {
 
         if (replied == 1) continue;
 
-        const char *your[] = {"your", "yours"};
-        for (int i = 0; i < (sizeof(your) / sizeof(your[0])); i++) {
-            if (strstr(input, your[i]) != NULL) {
-                position = strstr(input, your[i]);
-                strcpy(result, position + (strlen(your[i]) + 1));
-                
-                switch(chance(3)) {
-                    case 0: 
-                        sprintf(message, "Why are you concerned about my %s?\n", result);
-                        break;
-                    case 1:
-                        sprintf(message, "Why do your thoughts wonder to my %s?\n", result);
-                        break;
-                    case 2:
-                        sprintf(message, "Why did you think about my %s just now?\n", result);
-                        break;
-                    case 3:
-                        sprintf(message, "Why does my %s come to mind?\n", result);
-                        break;
-                }
-
-                display(message);
-                replied = 1;
-                break;
-            }
-        }
-
-        if (replied == 1) continue;
-
         const char *brought_up[] = {"you brought up", "you brought it up",
                                     "you mentioned", "you said", "how are you",
                                     "are you well?", "are you good?"};
@@ -524,6 +495,35 @@ int main(void) {
                         break;
                 }
 
+                replied = 1;
+                break;
+            }
+        }
+
+        if (replied == 1) continue;
+
+        const char *your[] = {"your", "yours"};
+        for (int i = 0; i < (sizeof(your) / sizeof(your[0])); i++) {
+            if (strstr(input, your[i]) != NULL) {
+                position = strstr(input, your[i]);
+                strcpy(result, position + (strlen(your[i]) + 1));
+                
+                switch(chance(3)) {
+                    case 0: 
+                        sprintf(message, "Why are you concerned about my %s?\n", result);
+                        break;
+                    case 1:
+                        sprintf(message, "Why do your thoughts wonder to my %s?\n", result);
+                        break;
+                    case 2:
+                        sprintf(message, "Why did you think about my %s just now?\n", result);
+                        break;
+                    case 3:
+                        sprintf(message, "Why does my %s come to mind?\n", result);
+                        break;
+                }
+
+                display(message);
                 replied = 1;
                 break;
             }
