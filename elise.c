@@ -5,7 +5,7 @@
 #include <ctype.h>
 #include <unistd.h>
 
-#define MAX_INPUT 100
+#define MAX_INPUT 1000
 int previous = -1;
 int error_rate = 100;
 int error_correction = 1;
@@ -903,6 +903,10 @@ int main(void) {
 
         encourage();
     }
+
+    free(input);
+    free(result);
+    free(message);
 
     return 0;
 }
