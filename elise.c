@@ -27,6 +27,7 @@ void initelise(void) {
 }
 
 void choose(char *letters) {
+    // Randomly pick a character from a provided string
     int position = chance(strlen(letters));
     printf("%c", letters[position]);
     fflush(stdout);
@@ -44,10 +45,12 @@ void display(char *message) {
 
     while (*message) {
         printf("%c", *message);
+        // Humanize the typing speed
         speed = 17000 + chance(30000);
         usleep(speed);
         fflush(stdout);
         
+        // Introduce spelling errors
         switch(chance(error_rate)) {
             case 0:
                 switch(*message) {
